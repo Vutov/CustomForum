@@ -29,5 +29,10 @@ class RegistrationRequest extends Request {
             'pass2' => 'required|same:pass',
 		];
 	}
-
+    //To fix better messages
+    public function messages() {
+        return [
+            'name.required' => 'TODO OVerride messages!',
+        ];
+    }
 }
