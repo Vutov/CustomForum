@@ -34,7 +34,7 @@ class UserController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		echo 'submited info here';
 	}
 
 	/**
