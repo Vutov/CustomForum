@@ -3,6 +3,7 @@
 use Forum\Http\Requests;
 use Forum\Http\Controllers\Controller;
 
+use Forum\Http\Requests\RegistrationRequest;
 use Illuminate\Http\Request;
 
 class UserController extends Controller {
@@ -12,10 +13,10 @@ class UserController extends Controller {
 	 *
 	 * @return Response
 	 */
-//	public function index()
-//	{
-//		//
-//	}
+	public function index()
+	{
+		return redirect('/');
+	}
 
 	/**
 	 * Show the form for creating a new resource.
@@ -32,9 +33,9 @@ class UserController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(RegistrationRequest $request)
 	{
-		echo 'submited info here';
+        echo 'ok!';
 	}
 
 	/**
