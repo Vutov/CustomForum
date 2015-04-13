@@ -11,8 +11,7 @@
             <li><a href="/">Home</a></li>
             <li><a href="/forum">Forum</a></li>
             <li><a href="/forum/topic">All topics</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>
+            <li><a href="/user/create">Register</a></li>
             <li><a href="/admin">Admin</a></li>
         </ul>
     </header>

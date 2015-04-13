@@ -22,17 +22,13 @@ Route::controllers([
 ]);
 
 //To be fixed;
-Route::get('/login', function(){
-    echo "login";
-});
 
-Route::get('/register', function(){
-    echo "register";
-});
 
-Route::get('/user/{id}', function($id){
-    echo "user: " . $id;
-})->where('id','[a-zA-Z]+'); //To fix regex later
+//Route::get('/user/{id}', function($id){
+//    echo "user: " . $id;
+//})->where('id','[a-zA-Z]+'); //To fix regex later
+
+Route::resource('/user', 'UserController');
 
 Route::get('/forum', function(){
     echo "forum";
