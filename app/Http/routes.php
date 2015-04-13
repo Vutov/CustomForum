@@ -32,7 +32,7 @@ Route::get('/register', function(){
 
 Route::get('/user/{id}', function($id){
     echo "user: " . $id;
-});
+})->where('id','[a-zA-Z]+'); //To fix regex later
 
 Route::get('/forum', function(){
     echo "forum";
@@ -45,7 +45,7 @@ Route::get('/forum/topic/{id?}', function($id = 0){
     else {
         echo "forum/topic/id = " . $id;
     }
-});
+})->where('id','[0-9]+');;
 
 Route::get('/admin', function(){
     echo 'admin panel';
