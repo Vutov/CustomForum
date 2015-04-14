@@ -46,3 +46,5 @@ Route::get('/forum/topic/{id?}', function($id = 0){
 Route::get('/admin', function(){
     echo 'admin panel';
 });
+
+Route::resource('/503', 'ErrorController');
