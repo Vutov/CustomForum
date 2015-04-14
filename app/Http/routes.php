@@ -11,7 +11,6 @@
 |
 */
 
-//To fix / , home
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
@@ -22,16 +21,11 @@ Route::controllers([
 ]);
 
 //To be fixed;
-
-
 //Route::get('/user/{id}', function($id){
 //    echo "user: " . $id;
 //})->where('id','[a-zA-Z]+'); //To fix regex later
 
-Route::resource('/user', 'UserController');
-
-
-
+Route::get('/logout', 'LogoutController@index');
 
 Route::get('/forum', function(){
     echo "forum";

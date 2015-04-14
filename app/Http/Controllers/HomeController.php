@@ -1,5 +1,7 @@
 <?php namespace Forum\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller {
 
 	/*
@@ -30,7 +32,11 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		$logged = false;
+        if (Auth::user()) {
+		    $logged = true;
+		}
+        return view('home',['logged'=>$logged]);
 	}
 
 }
