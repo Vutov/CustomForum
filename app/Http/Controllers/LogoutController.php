@@ -16,7 +16,7 @@ class LogoutController extends Controller {
 	public function index()
 	{
         Auth::logout();
-        return view('home',['logged'=>false]); //TODO make page for logout only!
+        return redirect('home'); //TODO make page for logout only!
 	}
 
 }

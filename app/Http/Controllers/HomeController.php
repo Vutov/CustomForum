@@ -32,11 +32,7 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		$logged = false;
-        if (Auth::user()) {
-		    $logged = true;
-		}
-        return view('home',['logged'=>$logged]);
+        return view('home');
 	}
 
 }
