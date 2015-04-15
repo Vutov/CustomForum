@@ -16,7 +16,7 @@ class Topic extends Model {
      *
      * @var array
      */
-    protected $fillable = ['title', 'body', 'author'];
+    protected $fillable = ['title', 'body', 'author_id'];
 
 
 }

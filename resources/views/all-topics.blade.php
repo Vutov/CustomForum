@@ -6,19 +6,26 @@
             <a href="/forum/create" class="btn btn-primary">New topic</a>
         </div>
 
-        @foreach($topics as $topic)
-            {{--TODO add @empty--}}
-            <div class="row">
-                <div class="panel panel-default">
+        <div class="row">
+            <div class="panel panel-default">
+                @foreach($topics as $topic)
+                    {{--TODO add @empty--}}
+
                     <div class="panel-heading">
-                        <a href="/forum/show/{{$topic['id']}}">{{$topic['title']}}</a>
+                        <h2>
+                            <a href="/forum/show/{{$topic['id']}}">{{$topic['title']}}</a>
+                        </h2>
+
+                        <div class="panel-footer">
+                            Author: {{\Forum\User::find($topic['author_id'])['name']}},
+                            posted: {{$topic->created_at->diffForHumans()}}
+                        </div>
                     </div>
-                    <div class="panel-footer">
-                        Author: {{$topic['author']}}, posted: {{$topic->created_at->diffForHumans()}}
-                    </div>
-                </div>
+
+
+                @endforeach
             </div>
-        @endforeach
+        </div>
     </div>
 
 

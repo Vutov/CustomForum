@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTopicsTable extends Migration {
+class CreateCommentsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,12 @@ class CreateTopicsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('topics', function(Blueprint $table)
+		Schema::create('comments', function(Blueprint $table)
 		{
 			$table->increments('id');
-            $table->string('title', 25);
+            $table->string('title');
             $table->string('body');
-            $table->integer('author_id');
+            $table->integer('topic_id');
 			$table->timestamps();
 		});
 	}
@@ -29,7 +29,7 @@ class CreateTopicsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('topics');
+		Schema::drop('comments');
 	}
 
 }

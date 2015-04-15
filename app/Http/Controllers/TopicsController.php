@@ -4,6 +4,7 @@ use Forum\Http\Requests;
 use Forum\Http\Requests\NewTopicRequest;
 use Forum\Http\Requests\SubmitTopicRequest;
 use Forum\Topic;
+use Forum\User;
 use Illuminate\Support\Facades\Auth;
 use Request;
 
@@ -39,7 +40,7 @@ class TopicsController extends Controller
     public function store(SubmitTopicRequest $request)
     {
         $input = Request::all();
-        Topic::create(['title'=>$input['title'], 'body'=>$input['body'], 'author'=>Auth::user()->name]);
+        Topic::create(['title'=>$input['title'], 'body'=>$input['body'], 'author_id' => Auth::user()->id]);
         return redirect('/forum');
     }
 
@@ -51,8 +52,8 @@ class TopicsController extends Controller
      */
     public function show($id)
     {
-        $topic = Topic::findOrFail($id);
-        return $topic->toArray();
+        $topic = Topic::findOrFail($id)->toArray();
+        return view('topic', ['topic' => $topic]);
 
     }
 
