@@ -27,18 +27,9 @@ Route::controllers([
 
 Route::get('/logout', 'LogoutController@index');
 
-Route::get('/forum', function(){
-    echo "forum";
-});
+Route::resource('/forum', 'TopicsController');
 
-Route::get('/forum/topic/{id?}', function($id = 0){
-    if($id === 0){
-        echo 'view all';
-    }
-    else {
-        echo "forum/topic/id = " . $id;
-    }
-})->where('id','[0-9]+');;
+Route::get('/forum/show/{id}', 'TopicsController@show')->where('id','[0-9]+');
 
 Route::get('/admin', function(){
     echo 'admin panel';

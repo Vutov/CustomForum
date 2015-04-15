@@ -7,12 +7,6 @@
     <!-- Fonts -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
     <style>
         header, footer {
             border: 1px solid #000000;
@@ -30,7 +24,6 @@
         <h5>Header</h5>
         <ul>
             <li><a href="/forum">Forum</a></li>
-            <li><a href="/forum/topic">All topics</a></li>
             <li><a href="/admin">Admin</a></li>
             @if (!Auth::user())
                 <li><a href="/auth/register">Register</a></li>
