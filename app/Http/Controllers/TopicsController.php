@@ -1,5 +1,6 @@
 <?php namespace Forum\Http\Controllers;
 
+use Carbon\Carbon;
 use Forum\Http\Requests;
 use Forum\Http\Requests\NewTopicRequest;
 use Forum\Http\Requests\SubmitTopicRequest;
@@ -19,7 +20,21 @@ class TopicsController extends Controller
     public function index()
     {
         $topics = Topic::latest()->get();
-        return view('all-topics', ['topics' => $topics]);
+        $data = [];
+        foreach ($topics as $topic) {
+            $author = User::find($topic['author_id'])['name'];
+            $time = $topic->created_at->diffForHumans();
+            $newTopic = [
+                'title' => $topic['title'],
+                'body' => $topic['body'],
+                'author' => $author,
+                'time' => $time,
+                'id' => $topic['id'],
+            ];
+            $data[] = $newTopic;
+        }
+
+        return view('all-topics', ['topics' => $data]);
     }
 
     /**
@@ -40,7 +55,7 @@ class TopicsController extends Controller
     public function store(SubmitTopicRequest $request)
     {
         $input = Request::all();
-        Topic::create(['title'=>$input['title'], 'body'=>$input['body'], 'author_id' => Auth::user()->id]);
+        Topic::create(['title' => $input['title'], 'body' => $input['body'], 'author_id' => Auth::user()->id]);
         return redirect('/forum');
     }
 
@@ -53,8 +68,10 @@ class TopicsController extends Controller
     public function show($id)
     {
         $topic = Topic::findOrFail($id)->toArray();
-        return view('topic', ['topic' => $topic]);
-
+        $time = Carbon::parse($topic['created_at'])->format('jS F Y \a\t H:m:s');
+        $author = User::find($topic['author_id'])['name'];
+        $data = ['topic' => $topic['title'], 'body' => $topic['body'], 'time' => $time, 'author' => $author];
+        return view('topic', $data);
     }
 
     /**

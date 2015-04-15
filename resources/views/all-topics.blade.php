@@ -8,22 +8,23 @@
 
         <div class="row">
             <div class="panel panel-default">
-                @foreach($topics as $topic)
-                    {{--TODO add @empty--}}
 
-                    <div class="panel-heading">
-                        <h2>
-                            <a href="/forum/show/{{$topic['id']}}">{{$topic['title']}}</a>
-                        </h2>
+                @if(!count($topics))
+                    <h2 class="alert-danger">No posts chief :(</h2>
+                @else
+                    @foreach($topics as $topic)
+                        <article class="panel-heading">
+                            <h2>
+                                <a href="/forum/show/{{$topic['id']}}">{{$topic['title']}}</a>
+                            </h2>
 
-                        <div class="panel-footer">
-                            Author: {{\Forum\User::find($topic['author_id'])['name']}},
-                            posted: {{$topic->created_at->diffForHumans()}}
-                        </div>
-                    </div>
-
-
-                @endforeach
+                            <div class="panel-footer">
+                                Posted {{$topic['time']}}
+                                by {{$topic['author']}}.
+                            </div>
+                        </article>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>

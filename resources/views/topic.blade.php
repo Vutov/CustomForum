@@ -10,14 +10,14 @@
         <div class="row">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    {{$topic['title']}}
+                    {{$topic}}
                 </div>
                 <div class="panel-body">
-                    {{$topic['body']}}
+                    {{$body}}
                 </div>
                 <div class="panel-footer">
-                    Author: {{\Forum\User::find($topic['author_id'])['name']}},
-                    posted on {{Carbon\Carbon::parse($topic['created_at'])->format('jS F Y \a\t H:m:s')}}
+                    Author: {{$author}},
+                    posted on {{$time}}
                 </div>
             </div>
         </div>
