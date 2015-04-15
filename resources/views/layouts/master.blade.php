@@ -33,7 +33,7 @@
             @endif
         </ul>
 
-        @if (Illuminate\Support\Facades\Auth::user())
+        @if (Auth::user())
             <div>Hello {{ Auth::user()->name}}</div>
         @endif
 

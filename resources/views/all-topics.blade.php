@@ -14,7 +14,7 @@
                         <a href="/forum/show/{{$topic['id']}}">{{$topic['title']}}</a>
                     </div>
                     <div class="panel-footer">
-                        Author: {{$topic['author']}}, posted: {{$topic['created_at']}}
+                        Author: {{$topic['author']}}, posted: {{$topic->created_at->diffForHumans()}}
                     </div>
                 </div>
             </div>
