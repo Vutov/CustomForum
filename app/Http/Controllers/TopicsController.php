@@ -1,6 +1,7 @@
 <?php namespace Forum\Http\Controllers;
 
 use Carbon\Carbon;
+use Forum\Comment;
 use Forum\Http\Requests;
 use Forum\Http\Requests\NewTopicRequest;
 use Forum\Http\Requests\SubmitTopicRequest;
@@ -24,17 +25,10 @@ class TopicsController extends Controller
         foreach ($topics as $topic) {
             $author = User::find($topic['author_id'])['name'];
             $time = $topic->created_at->diffForHumans();
-            $newTopic = [
-                'title' => $topic['title'],
-                'body' => $topic['body'],
-                'author' => $author,
-                'time' => $time,
-                'id' => $topic['id'],
-                'visits' => $topic['visits'],
-                'tags' => $topic['tags'],
-                'category' => $topic['category'],
-            ];
-            $data[] = $newTopic;
+            $topic = $topic->toArray();
+            $topic['author'] = $author;
+            $topic['time'] = $time;
+            $data[] = $topic;
         }
 
         return view('all-topics', ['topics' => $data]);
@@ -79,6 +73,16 @@ class TopicsController extends Controller
     public function show($id)
     {
         $topic = Topic::findOrFail($id);
+        //Get comments
+        $comments = Comment::where('topic_id', '=', $id)->latest()->get();
+        $data = [];
+        foreach($comments as $comment) {
+            $time = $comment->created_at->diffForHumans();
+            $comment = $comment->toArray();
+            $comment['time'] = $time;
+            $data[] = $comment;
+
+        }
         //Update view count
         $topic->visits++;
         $topic->push();
@@ -88,6 +92,7 @@ class TopicsController extends Controller
         $author = User::find($topic['author_id'])['name'];
         $topic['time'] = $time;
         $topic['author'] = $author;
+        $topic['comments'] = $data;
 
         return view('topic', $topic);
     }

@@ -31,6 +31,8 @@ Route::resource('/forum', 'TopicsController');
 
 Route::get('/forum/show/{id}', 'TopicsController@show')->where('id','[0-9]+');
 
+Route:resource('/reply', 'ReplyController');
+
 Route::get('/admin', function(){
     echo 'admin panel';
 });
