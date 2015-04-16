@@ -19,8 +19,14 @@
                             </h2>
 
                             <div class="panel-footer">
-                                Posted {{$topic['time']}}
-                                by {{$topic['author']}}.
+                                <div class="container">
+                                    Posted {{$topic['time']}}
+                                    by {{$topic['author']}}.
+                                </div>
+                                <div class="container">
+                                    Tags: {{$topic['tags']}},
+                                    Category {{$topic['category']}}
+                                </div>
                             </div>
                         </article>
                     @endforeach

@@ -10,7 +10,7 @@
         <div class="row">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    {{$topic}}
+                    {{$title}}
                 </div>
                 <div class="panel-body">
                     {{$body}}
@@ -18,6 +18,13 @@
                 <div class="panel-footer">
                     Author: {{$author}},
                     posted on {{$time}}
+                </div>
+                <div class="container">
+                    Tags: {{$tags}},
+                    Category {{$category}}
+                </div>
+                <div class="container">
+                    Visited: {{$visits}}
                 </div>
             </div>
         </div>

@@ -18,6 +18,9 @@ class CreateTopicsTable extends Migration {
             $table->string('title', 25);
             $table->string('body');
             $table->integer('author_id');
+            $table->integer('visits');
+            $table->string('tags', 100);
+            $table->string('category', 25);
 			$table->timestamps();
 		});
 	}

@@ -2,7 +2,8 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Topic extends Model {
+class Topic extends Model
+{
 
     /**
      * The database table used by the model.
@@ -16,7 +17,7 @@ class Topic extends Model {
      *
      * @var array
      */
-    protected $fillable = ['title', 'body', 'author_id'];
+    protected $fillable = ['title', 'body', 'author_id', 'visits', 'tags', 'category'];
 
 
 }

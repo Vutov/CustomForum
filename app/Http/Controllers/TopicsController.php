@@ -30,6 +30,9 @@ class TopicsController extends Controller
                 'author' => $author,
                 'time' => $time,
                 'id' => $topic['id'],
+                'visits' => $topic['visits'],
+                'tags' => $topic['tags'],
+                'category' => $topic['category'],
             ];
             $data[] = $newTopic;
         }
@@ -55,7 +58,15 @@ class TopicsController extends Controller
     public function store(SubmitTopicRequest $request)
     {
         $input = Request::all();
-        Topic::create(['title' => $input['title'], 'body' => $input['body'], 'author_id' => Auth::user()->id]);
+        Topic::create([
+            'title' => $input['title'],
+            'body' => $input['body'],
+            'author_id' => Auth::user()->id,
+            'visits' => 0,
+            'tags' => '100 symbol limit',
+            'category' => '25 symbol limit',
+        ]);
+
         return redirect('/forum');
     }
 
@@ -67,11 +78,18 @@ class TopicsController extends Controller
      */
     public function show($id)
     {
-        $topic = Topic::findOrFail($id)->toArray();
+        $topic = Topic::findOrFail($id);
+        //Update view count
+        $topic->visits++;
+        $topic->push();
+        //Sum up the data
+        $topic = $topic->toArray();
         $time = Carbon::parse($topic['created_at'])->format('jS F Y \a\t H:m:s');
         $author = User::find($topic['author_id'])['name'];
-        $data = ['topic' => $topic['title'], 'body' => $topic['body'], 'time' => $time, 'author' => $author];
-        return view('topic', $data);
+        $topic['time'] = $time;
+        $topic['author'] = $author;
+
+        return view('topic', $topic);
     }
 
     /**
