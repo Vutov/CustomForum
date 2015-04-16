@@ -24,6 +24,8 @@ class SubmitTopicRequest extends Request {
         return [
             'title' => 'required|min:10|max:25',
             'body' => 'required|min:10',
+            'category' => ['regex:/\bProgramming\b|\bFun\b|\bCannot think of category\b/', 'max:25', 'required'],
+            'tags' => 'required|min:3|max:100'
         ];
     }
 

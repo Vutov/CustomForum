@@ -18,6 +18,7 @@ class CreateCommentsTable extends Migration {
             $table->string('title');
             $table->string('body');
             $table->integer('topic_id');
+            $table->boolean('guest');
             $table->string('user_name', 25);
             $table->string('user_email', 35)->nullable();
 			$table->timestamps();

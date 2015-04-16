@@ -49,6 +49,7 @@ class ReplyController extends Controller
                 'title' => $input['title'],
                 'body' => $input['body'],
                 'topic_id' => $topic['id'],
+                'guest' => true,
                 'user_name' => $input['name'],
                 'user_email' => $input['email'],
             ]);
@@ -57,6 +58,7 @@ class ReplyController extends Controller
                 'title' => $input['title'],
                 'body' => $input['body'],
                 'topic_id' => $topic['id'],
+                'guest' => false,
                 'user_name' => Auth::User()->name,
                 'user_email' => "",
             ]);

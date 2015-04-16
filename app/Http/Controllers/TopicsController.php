@@ -52,13 +52,15 @@ class TopicsController extends Controller
     public function store(SubmitTopicRequest $request)
     {
         $input = Request::all();
+        $tags = preg_replace('/[#$\\/|?!\.@()\]\[\'\":^%\-=*\s]+/',"1",  $input['tags']);
+        $tags = preg_split('/[,]+/', $tags);
         Topic::create([
             'title' => $input['title'],
             'body' => $input['body'],
             'author_id' => Auth::user()->id,
             'visits' => 0,
-            'tags' => '100 symbol limit',
-            'category' => '25 symbol limit',
+            'tags' => join($tags, ', '),
+            'category' => $input['category'],
         ]);
 
         return redirect('/forum');

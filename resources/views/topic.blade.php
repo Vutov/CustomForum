@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="container">
-
         {{--Topic--}}
         <div class="row">
             <div class="panel panel-default">
@@ -30,22 +29,23 @@
         @foreach($comments as $comment)
             <div class="row">
                 <div class="panel panel-default">
-                    <h3 class="panel-title">
+                    <h3 class="panel-title panel-heading">
                         {{$comment['title']}}
-                        <div class="panel-info">
-
-                        </div>
                     </h3>
+
                     <div class="panel panel-body">
-                        <div class="panel-info">{{$comment['user_name']}} commented :</div>
                         <div class="panel-primary">
                             {{$comment['body']}}
                         </div>
-                        <div class="panel-footer">
-                            {{$comment['time']}}
-                        </div>
                     </div>
-
+                    <div class="panel-footer panel-info">
+                        {{$comment['time']}} by
+                        @if($comment['guest'])
+                            {{$comment['user_name']}} {{$comment['user_email']}} (guest)
+                        @else
+                            {{$comment['user_name']}}
+                        @endif
+                    </div>
                 </div>
             </div>
         @endforeach
@@ -53,11 +53,10 @@
         {{--Reply--}}
         <div class="panel">
             <div class="panel panel-default">
-                <a href="" class="btn btn-primary">New reply</a>
                 <a href="/forum" class="btn btn-primary">Back</a>
             </div>
 
-            <div class="row">
+            <div class="row" id="reply">
                 <div class="panel panel-default">
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">

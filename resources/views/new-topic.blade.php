@@ -32,6 +32,15 @@
                             {!! Form::text('body', null, ['class' => 'form-control', 'placeholder'=>'Body']) !!}
                         </div>
 
+                        <div class="form-group">
+                            {!! Form::label('category', 'Category', ['class' => 'form-control']) !!}
+                            {!! Form::select('category', ['Programming' => 'Programming', 'Fun' => 'Fun', 'Cannot think of category' => 'Cannot think of category'], null, ['class' => 'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
+                            {!! Form::label('tags', 'Tags', ['class' => 'form-control']) !!}
+                            {!! Form::text('tags', null, ['class' => 'form-control', 'placeholder'=>'Separate different tags with comma']) !!}
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
