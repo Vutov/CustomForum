@@ -3,44 +3,42 @@
 @section('content')
     @include('errors/validation')
     {{--Topic--}}
-
-    @include ('partials/post')
-
-    {{--Reply--}}
-    <div class="panel">
-
-        {!! Form::open(['url' => '/reply']) !!}
-
-        <div class="form-group">
-            {!! Form::label('title', 'Title', ['class' => 'label label-default']) !!}
-            {!! Form::text('title', null, ['class' => 'form-control', 'placeholder'=>'Title']) !!}
+    <article class="panel panel-primary">
+        @include ('partials/post')
+        {{--Comments--}}
+        <div class="panel panel-body">
+            @foreach($comments as $comment)
+                @include('partials/comment', ['comment' => $comment])
+            @endforeach
         </div>
+        {{--Reply--}}
+        <div class="panel panel-body">
+            <h3 class="panel">Leave a comment</h3>
+            {!! Form::open(['url' => '/reply']) !!}
 
-        <div class="form-group">
-            {!! Form::label('body', 'Answer', ['class' => 'label label-default']) !!}
-            {!! Form::textarea('body', null, ['class' => 'form-control', 'placeholder'=>'Type your answer here']) !!}
-        </div>
-        @if(Auth::guest())
+            @include('partials\topic-form', ['body' => 'Answer', 'bodyPlaceholder' => 'Type your answer here'])
+
+            @if(Auth::guest())
+                <div class="form-group">
+                    {!! Form::label('name', 'Name', ['class' => 'label label-default']) !!}
+                    {!! Form::text('name', null, ['class' => 'form-control', 'placeholder'=>'Your Name']) !!}
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('email', 'Email (optional)', ['class' => 'label label-default']) !!}
+                    {!! Form::email('email', null, ['class' => 'form-control', 'placeholder'=>'Your Email']) !!}
+                </div>
+            @endif
+
             <div class="form-group">
-                {!! Form::label('name', 'Name', ['class' => 'label label-default']) !!}
-                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder'=>'Your Name']) !!}
+                <div class="btn-group">
+                    <a href="/forum" class="btn btn-primary">Back</a>
+                    <a href="" class="btn btn-primary">Top</a>
+                    {!! Form::hidden('id', Crypt::encrypt($id)) !!}
+                    {!! Form::submit('Reply', ['class' => 'btn btn-primary']) !!}
+                </div>
             </div>
-
-            <div class="form-group">
-                {!! Form::label('email', 'Email (optional)', ['class' => 'label label-default']) !!}
-                {!! Form::email('email', null, ['class' => 'form-control', 'placeholder'=>'Your Email']) !!}
-            </div>
-        @endif
-
-        <div class="form-group">
-            <div class="col-1 btn-group btn-group">
-                <a href="/forum" class="btn btn-primary">Back</a>
-                <a href="" class="btn btn-primary">Top</a>
-                {!! Form::hidden('id', Crypt::encrypt($id)) !!}
-                {!! Form::submit('Reply', ['class' => 'btn btn-primary']) !!}
-            </div>
+            {!! Form::close() !!}
         </div>
-        {!! Form::close() !!}
-    </div>
-
+    </article>
 @endsection

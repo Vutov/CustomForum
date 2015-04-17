@@ -1,55 +1,39 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
 
-                @if (count($errors) > 0)
-                    <div class="alert alert-danger">
-                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
+            @include('errors/validation')
+
+            <div class="panel panel-default">
+                <div class="panel-heading">New Topic</div>
+                <div class="panel-body">
+
+                    {!! Form::open(['url' => '/forum']) !!}
+
+                    @include('partials/topic-form', ['body' => 'Answer', 'bodyPlaceholder' => 'Type your answer here'])
+
+
+                    <div class="form-group">
+                        {!! Form::label('category', 'Category', ['class' => 'label label-default']) !!}
+                        {!! Form::select('category', ['Programming' => 'Programming', 'Fun' => 'Fun', 'Cannot think of
+                        category' => 'Cannot think of category'], null, ['class' => 'form-control']) !!}
                     </div>
-                @endif
-                
-                <div class="panel panel-default">
-                    <div class="panel-heading">New Topic</div>
-                    <div class="panel-body">
 
-                        {!! Form::open(['url' => '/forum']) !!}
-
-                        <div class="form-group">
-                            {!! Form::label('title', 'Title', ['class' => 'form-control']) !!}
-                            {!! Form::text('title', null, ['class' => 'form-control', 'placeholder'=>'Title']) !!}
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::label('body', 'Body', ['class' => 'form-control']) !!}
-                            {!! Form::text('body', null, ['class' => 'form-control', 'placeholder'=>'Body']) !!}
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::label('category', 'Category', ['class' => 'form-control']) !!}
-                            {!! Form::select('category', ['Programming' => 'Programming', 'Fun' => 'Fun', 'Cannot think of category' => 'Cannot think of category'], null, ['class' => 'form-control']) !!}
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::label('tags', 'Tags', ['class' => 'form-control']) !!}
-                            {!! Form::text('tags', null, ['class' => 'form-control', 'placeholder'=>'Separate different tags with comma']) !!}
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
-
-                            </div>
-                        </div>
-                        {!! Form::close() !!}
+                    <div class="form-group">
+                        {!! Form::label('tags', 'Tags', ['class' => 'label label-default']) !!}
+                        {!! Form::text('tags', null, ['class' => 'form-control', 'placeholder'=>'Separate different tags
+                        with comma']) !!}
                     </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-5">
+                            {!! Form::submit('Create', ['class' => 'btn btn-primary']) !!}
+
+                        </div>
+                    </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
