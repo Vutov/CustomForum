@@ -11,28 +11,19 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'TopicsController@index');
 
-Route::get('home', 'HomeController@index');
+Route::get('/home', function() {
+    return redirect('/');
+});
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
 
-//To be fixed;
-//Route::get('/user/{id}', function($id){
-//    echo "user: " . $id;
-//})->where('id','[a-zA-Z]+'); //To fix regex later
-
-Route::get('/logout', 'LogoutController@index');
-
 Route::resource('/forum', 'TopicsController');
 
 Route::get('/forum/show/{id}', 'TopicsController@show')->where('id','[0-9]+');
 
-Route:resource('/reply', 'ReplyController');
-
-Route::get('/admin', function(){
-    echo 'admin panel';
-});
+Route::resource('/reply', 'ReplyController');

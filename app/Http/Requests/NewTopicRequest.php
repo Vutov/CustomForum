@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 
+
 class NewTopicRequest extends Request
 {
     /**
@@ -21,7 +22,8 @@ class NewTopicRequest extends Request
     //If not logged
     public function forbiddenResponse()
     {
-        return redirect('home');
+        session()->flash('flash_message', 'You have to be logged to create new topics');
+        return redirect('auth/login');
     }
 
     /**

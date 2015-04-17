@@ -25,7 +25,7 @@
                                 </div>
                                 <div class="row">Category {{$topic['category']}}</div>
                                 <div class="row">
-                                    Tags: {{$topic['tags']}},
+                                    Tags: {{$topic['tags']}}
                                 </div>
                             </div>
                         </article>

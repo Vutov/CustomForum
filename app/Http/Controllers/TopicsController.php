@@ -62,7 +62,7 @@ class TopicsController extends Controller
             'tags' => join($tags, ', '),
             'category' => $input['category'],
         ]);
-
+        session()->flash('flash_message', 'New topic created');
         return redirect('/forum');
     }
 

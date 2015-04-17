@@ -39,12 +39,11 @@
         <h5>Header</h5>
         <ul>
             <li><a href="/forum">Forum</a></li>
-            <li><a href="/admin">Admin</a></li>
             @if (!Auth::user())
                 <li><a href="/auth/register">Register</a></li>
                 <li><a href="/auth/login">Login</a></li>
             @else
-                <li><a href="/logout">Logout</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
             @endif
         </ul>
 
@@ -73,6 +72,11 @@
 
     </header>
     <main>
+        @if(Session::has('flash_message'))
+            <div class='alert alert-success'>{{ session('flash_message') }}
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+        @endif
         @yield('content')
     </main>
     <footer>
