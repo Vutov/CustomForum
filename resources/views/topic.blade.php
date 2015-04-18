@@ -18,7 +18,7 @@
             <h3 class="panel">Leave a comment</h3>
             {!! Form::open(['url' => '/reply']) !!}
 
-            @include('partials\topic-form', ['body' => 'Answer', 'bodyPlaceholder' => 'Type your answer here'])
+            @include('partials/topic-form', ['body' => 'Answer', 'bodyPlaceholder' => 'Type your answer here'])
 
             @if(Auth::guest())
                 <div class="form-group">
