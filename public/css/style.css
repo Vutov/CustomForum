@@ -22,7 +22,7 @@ main {
 
 body {
     background-image: url("/images/amazing-vancouver-wallpaper.jpg");
-    background-size: 100% auto;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
