@@ -10,7 +10,7 @@
 
                     {!! Form::open(['url' => '/forum']) !!}
 
-                    @include('partials/topic-form', ['body' => 'Answer', 'bodyPlaceholder' => 'Type your answer here'])
+                    @include('partials/topic-form', ['body' => 'Question', 'bodyPlaceholder' => 'Type your question here'])
 
 
                     <div class="form-group">

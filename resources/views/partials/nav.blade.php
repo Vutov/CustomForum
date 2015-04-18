@@ -51,7 +51,6 @@
                     </div>
                     {!! Form::hidden('criteria', 'Topic question', ['id' => 'criteria']) !!}
                     {!! Form::text('search', null, ['class' => 'form-control', 'placeholder'=>'Search']) !!}
-                    {{--<input type="text" class="form-control" placeholder="Search">--}}
                     <span class="input-group-addon">
                         <button type="submit" class="transparent">
                             <span class="glyphicon glyphicon-search"></span>

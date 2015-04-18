@@ -39,9 +39,8 @@ class ReplyRequest extends Request {
 
     public function messages()
     {
-        //TODO fix messages;
         return [
-            'title.required' => 'Er, I have to add message!',
+            'body.required' => 'The answer field is required.',
         ];
     }
 }

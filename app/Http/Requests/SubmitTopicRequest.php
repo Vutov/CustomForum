@@ -31,9 +31,8 @@ class SubmitTopicRequest extends Request {
 
     public function messages()
     {
-        //TODO fix messages;
         return [
-            'title.required' => 'Er, I have to add message!',
+            'body.required' => 'The question field is required.',
         ];
     }
 

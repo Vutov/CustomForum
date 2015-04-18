@@ -29,3 +29,6 @@ Route::resource('/reply', 'ReplyController');
 Route::resource('/profile', 'ProfileController');
 
 Route::post('/search', 'SearchController@search');
+
+Route::get('/search/{criteria}/{id}', 'SearchController@show');
+

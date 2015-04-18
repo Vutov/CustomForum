@@ -22,7 +22,7 @@ class ViewProfileRequest extends Request
     //If not logged
     public function forbiddenResponse()
     {
-        session()->flash('flash_message', 'You have to be logged to view your profile');
+        session()->flash('flash_message', 'You have to be logged in to view your profile!');
         return redirect('auth/login');
     }
 

@@ -28,6 +28,8 @@ class TopicsController extends Controller
             $topic = $topic->toArray();
             $topic['author'] = $author;
             $topic['time'] = $time;
+            $tags = preg_split('/[,\s]+/', $topic['tags'], -1, PREG_SPLIT_NO_EMPTY);
+            $topic['tags'] = $tags;
             $data[] = $topic;
         }
 
@@ -52,8 +54,9 @@ class TopicsController extends Controller
     public function store(SubmitTopicRequest $request)
     {
         $input = Request::all();
-        $tags = preg_replace('/[#$\\/|?!\.@()\]\[\'\":^%\-=*\s]+/',"1",  $input['tags']);
-        $tags = preg_split('/[,]+/', $tags);
+        $tags = preg_replace('/[#$\\/|?!\.@()\]\[\'\":^%\-=*\s]+/',"",  $input['tags']);
+        $tags = preg_split('/[,]+/', $tags, -1, PREG_SPLIT_NO_EMPTY);
+        $tags = array_unique($tags);
         $topic = new Topic([
             'title' => $input['title'],
             'body' => $input['body'],
@@ -92,6 +95,8 @@ class TopicsController extends Controller
         $topic = $topic->toArray();
         $time = Carbon::parse($topic['created_at'])->format('jS F Y \a\t H:m:s');
         $author = User::find($topic['user_id'])['name'];
+        $tags = preg_split('/[,\s]+/', $topic['tags'], -1, PREG_SPLIT_NO_EMPTY);
+        $topic['tags'] = $tags;
         $topic['time'] = $time;
         $topic['author'] = $author;
         $topic['comments'] = $data;

@@ -14,7 +14,7 @@ class SearchController extends Controller
      *
      * @return Response
      */
-    public function search()
+    public function search(Requests\SearchRequest $request)
     {
         $input = Request::all();
         $query = $input['search'];
@@ -44,10 +44,26 @@ class SearchController extends Controller
                 $comment = Comment::where('body', 'LIKE', '%' . $str . '%')->get()->toArray();
                 $data[] = $comment;
             }
+            else {
+                abort(404);
+            }
         }
 
         return view('search', ['data' => $data]);
     }
 
+    public function show($criteria, $id) {
 
+        if ($criteria === 'cat') {
+            $result = Topic::where('category', '=', $id)->get()->toArray();
+        }
+        else if ($criteria === 'tag') {
+            $result = Topic::where('tags', 'LIKE', '%' . $id . '%')->get()->toArray();
+        } else {
+            abort(404);
+        }
+
+
+        return view('search', ['data' => $result]);
+    }
 }
