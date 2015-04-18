@@ -14,7 +14,7 @@
                 </div>
             @endif
         @else
-            {{$comment['user_name']}}
+            <a href="/profile/{{$comment['user_name']}}">{{$comment['user_name']}}</a>
         @endif
     </div>
 </article>

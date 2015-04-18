@@ -17,29 +17,60 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Forum <span class="sr-only">(current)</span></a></li>
             </ul>
-            <form class="navbar-form navbar-right" role="search">
+            {!! Form::open(['url' => '/search', 'class' => 'navbar-form navbar-right', 'role' => 'search']) !!}
                 {{--Search Button--}}
                 <div id="imaginary_container">
                     <div class="input-group stylish-input-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <div class="input-group-btn search-panel">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <span id="search_concept">Filter by</span> <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#contains">Contains</a></li>
+                                <li><a href="#its_equal">It's equal</a></li>
+                                <li><a href="#greather_than">Greather than ></a></li>
+                                <li><a href="#less_than">Less than < </a></li>
+                                <li class="divider"></li>
+                                <li><a href="#all">Anything</a></li>
+                            </ul>
+                        </div>
+                        {!! Form::text('search', null, ['class' => 'form-control', 'placeholder'=>'Search']) !!}
+                        {{--<input type="text" class="form-control" placeholder="Search">--}}
                     <span class="input-group-addon">
-                        <button type="submit">
+                        <button type="submit" class="transparent">
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
                     </span>
                     </div>
                 </div>
-            </form>
+            {!! Form::close() !!}
+
+
+
+
+
+            {{--{!! Form::open(['url' => '/search', 'class' => 'navbar-form navbar-right', 'role' => 'search']) !!}--}}
+            {{--Search Button--}}
+            {{--<div id="imaginary_container">--}}
+                {{--<div class="input-group stylish-input-group">--}}
+                    {{--{!! Form::text('search', null, ['class' => 'form-control', 'placeholder'=>'Search']) !!}--}}
+                    {{--<input type="text" class="form-control" placeholder="Search">--}}
+                    {{--<span class="input-group-addon">--}}
+                        {{--<button type="submit">--}}
+                            {{--<span class="glyphicon glyphicon-search"></span>--}}
+                        {{--</button>--}}
+                    {{--</span>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--{!! Form::close() !!}--}}
             @if (Auth::user())
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->name}}<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            {{--<li><a href="#">Action</a></li>--}}
-                            {{--<li><a href="#">Another action</a></li>--}}
-                            {{--<li><a href="#">Something else here</a></li>--}}
-                            {{--<li class="divider"></li>--}}
+                            <li><a href="/profile">My Profile</a></li>
+                            <li class="divider"></li>
                             <li><a href="/auth/logout">Logout</a></li>
                         </ul>
                     </li>

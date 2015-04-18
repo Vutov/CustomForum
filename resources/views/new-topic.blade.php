@@ -4,8 +4,6 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
 
-            @include('errors/validation')
-
             <div class="panel panel-default">
                 <div class="panel-heading">New Topic</div>
                 <div class="panel-body">
@@ -17,8 +15,7 @@
 
                     <div class="form-group">
                         {!! Form::label('category', 'Category', ['class' => 'label label-default']) !!}
-                        {!! Form::select('category', ['Programming' => 'Programming', 'Fun' => 'Fun', 'Cannot think of
-                        category' => 'Cannot think of category'], null, ['class' => 'form-control']) !!}
+                        {!! Form::select('category', ['Programming' => 'Programming', 'Fun' => 'Fun', 'Cannot think of category' => 'Cannot think of category'], null, ['class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">

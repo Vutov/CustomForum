@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-    @include('errors/validation')
     {{--Topic--}}
     <article class="panel panel-primary">
         @include ('partials/post')

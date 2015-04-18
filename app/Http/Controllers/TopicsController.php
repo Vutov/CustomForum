@@ -23,7 +23,7 @@ class TopicsController extends Controller
         $topics = Topic::latest()->get();
         $data = [];
         foreach ($topics as $topic) {
-            $author = User::find($topic['author_id'])['name'];
+            $author = User::find($topic['user_id'])['name'];
             $time = $topic->created_at->diffForHumans();
             $topic = $topic->toArray();
             $topic['author'] = $author;
@@ -54,14 +54,14 @@ class TopicsController extends Controller
         $input = Request::all();
         $tags = preg_replace('/[#$\\/|?!\.@()\]\[\'\":^%\-=*\s]+/',"1",  $input['tags']);
         $tags = preg_split('/[,]+/', $tags);
-        Topic::create([
+        $topic = new Topic([
             'title' => $input['title'],
             'body' => $input['body'],
-            'author_id' => Auth::user()->id,
             'visits' => 0,
             'tags' => join($tags, ', '),
             'category' => $input['category'],
         ]);
+        Auth::user()->topics()->save($topic);
         session()->flash('flash_message', 'New topic created');
         return redirect('/forum');
     }
@@ -91,7 +91,7 @@ class TopicsController extends Controller
         //Sum up the data
         $topic = $topic->toArray();
         $time = Carbon::parse($topic['created_at'])->format('jS F Y \a\t H:m:s');
-        $author = User::find($topic['author_id'])['name'];
+        $author = User::find($topic['user_id'])['name'];
         $topic['time'] = $time;
         $topic['author'] = $author;
         $topic['comments'] = $data;

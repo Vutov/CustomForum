@@ -54,7 +54,7 @@ class ReplyController extends Controller
                 'user_email' => $input['email'],
             ]);
         } else {
-            Comment::create([
+            $comment = new Comment([
                 'title' => $input['title'],
                 'body' => $input['body'],
                 'topic_id' => $topic['id'],
@@ -62,9 +62,10 @@ class ReplyController extends Controller
                 'user_name' => Auth::User()->name,
                 'user_email' => "",
             ]);
+            Auth::user()->comments()->save($comment);
         }
 
-        return redirect("/forum/show/$id");
+        return redirect("/forum/$id");
     }
 
     /**

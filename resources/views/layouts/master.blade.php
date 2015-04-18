@@ -12,9 +12,11 @@
 <div class="container">
     <header>
         @include('partials/nav')
+        @include('partials/flash')
+        @include('errors/validation')
+
     </header>
     <main>
-        @include('partials/flash')
         @yield('content')
     </main>
     <footer>

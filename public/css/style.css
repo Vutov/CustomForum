@@ -4,17 +4,29 @@
 
 .stylish-input-group .form-control {
     border-right: 0;
+    border-left: 0;
     box-shadow: 0 0 0;
     border-color: #ccc;
 }
 
 .stylish-input-group button {
     border: 0;
+
+}
+
+.transparent {
     background: transparent;
 }
 
+.stylish-input-group .search-panel {
+    border: 1px solid #cccccc;
+    border-right: 0;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
 main {
-    min-height: 700px;
+    min-height: 500px;
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
@@ -28,7 +40,7 @@ body {
 }
 
 .panel {
-    background: rgba(255,255,255,0.9);
+    background: rgba(255, 255, 255, 0.9);
 }
 
 footer {

@@ -24,6 +24,8 @@ Route::controllers([
 
 Route::resource('/forum', 'TopicsController');
 
-Route::get('/forum/show/{id}', 'TopicsController@show')->where('id','[0-9]+');
-
 Route::resource('/reply', 'ReplyController');
+
+Route::resource('/profile', 'ProfileController');
+
+Route::post('/search', 'SearchController@search');
