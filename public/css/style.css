@@ -25,6 +25,10 @@
     border-top-left-radius: 4px;
 }
 
+.dropdown-menu li a {
+    cursor: pointer;
+}
+
 main {
     min-height: 500px;
     display: flex;

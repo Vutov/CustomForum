@@ -18,51 +18,49 @@
                 <li class="active"><a href="/">Forum <span class="sr-only">(current)</span></a></li>
             </ul>
             {!! Form::open(['url' => '/search', 'class' => 'navbar-form navbar-right', 'role' => 'search']) !!}
-                {{--Search Button--}}
-                <div id="imaginary_container">
-                    <div class="input-group stylish-input-group">
-                        <div class="input-group-btn search-panel">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                <span id="search_concept">Filter by</span> <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#contains">Contains</a></li>
-                                <li><a href="#its_equal">It's equal</a></li>
-                                <li><a href="#greather_than">Greather than ></a></li>
-                                <li><a href="#less_than">Less than < </a></li>
-                                <li class="divider"></li>
-                                <li><a href="#all">Anything</a></li>
-                            </ul>
-                        </div>
-                        {!! Form::text('search', null, ['class' => 'form-control', 'placeholder'=>'Search']) !!}
-                        {{--<input type="text" class="form-control" placeholder="Search">--}}
+            {{--Search Button--}}
+            <div id="imaginary_container">
+                <div class="input-group stylish-input-group">
+                    <div class="input-group-btn search-panel">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            <span id="search">Search by</span> <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role='presentation' onclick="select('Username')">
+                                <a role="menuitem" tabindex="-1">Username</a>
+                            </li>
+                            <li role='presentation' onclick="select('Topic title')">
+                                <a role="menuitem" tabindex="-1">Topic title</a>
+                            </li>
+                            <li role='presentation' onclick="select('Topic question')">
+                                <a role="menuitem" tabindex="-1">Topic question</a>
+                            </li>
+                            <li role='presentation' onclick="select('Topic tags')">
+                                <a role="menuitem" tabindex="-1">Topic tags</a>
+                            </li>
+                            <li role='presentation' onclick="select('Topic category')">
+                                <a role="menuitem" tabindex="-1">Topic category</a>
+                            </li>
+                            <li role='presentation' onclick="select('Comment title')">
+                                <a role="menuitem" tabindex="-1">Comment title</a>
+                            </li>
+                            <li role='presentation' onclick="select('Comment answer')">
+                                <a role="menuitem" tabindex="-1">Comment answer</a>
+                            </li>
+                        </ul>
+                    </div>
+                    {!! Form::hidden('criteria', 'Topic question', ['id' => 'criteria']) !!}
+                    {!! Form::text('search', null, ['class' => 'form-control', 'placeholder'=>'Search']) !!}
+                    {{--<input type="text" class="form-control" placeholder="Search">--}}
                     <span class="input-group-addon">
                         <button type="submit" class="transparent">
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
                     </span>
-                    </div>
                 </div>
+            </div>
             {!! Form::close() !!}
 
-
-
-
-
-            {{--{!! Form::open(['url' => '/search', 'class' => 'navbar-form navbar-right', 'role' => 'search']) !!}--}}
-            {{--Search Button--}}
-            {{--<div id="imaginary_container">--}}
-                {{--<div class="input-group stylish-input-group">--}}
-                    {{--{!! Form::text('search', null, ['class' => 'form-control', 'placeholder'=>'Search']) !!}--}}
-                    {{--<input type="text" class="form-control" placeholder="Search">--}}
-                    {{--<span class="input-group-addon">--}}
-                        {{--<button type="submit">--}}
-                            {{--<span class="glyphicon glyphicon-search"></span>--}}
-                        {{--</button>--}}
-                    {{--</span>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--{!! Form::close() !!}--}}
             @if (Auth::user())
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
@@ -87,4 +85,11 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
+
+<script>
+    function select(option) {
+        document.getElementById('search').innerHTML = option;
+        document.getElementById('criteria').value = option;
+    }
+</script>
 
