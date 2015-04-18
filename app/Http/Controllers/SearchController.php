@@ -32,7 +32,8 @@ class SearchController extends Controller
                 $topic = Topic::where('body', 'LIKE', '%' . $str . '%')->get()->toArray();
                 $data[] = $topic;
             } else if ($criteria === 'Topic tags') {
-                $topic = Topic::where('tags', 'LIKE', '%' . $str . '%')->get()->toArray();
+                $tag = str_replace('#', '', $str);
+                $topic = Topic::where('tags', 'LIKE', '%' . $tag . '%')->get()->toArray();
                 $data[] = $topic;
             } else if ($criteria === 'Topic category') {
                 $topic = Topic::where('category', 'LIKE', '%' . $str . '%')->get()->toArray();
