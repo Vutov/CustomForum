@@ -6,11 +6,13 @@
     <article class="panel panel-primary">
         @include ('partials/post')
         {{--Comments--}}
-        <div class="panel panel-body">
-            @foreach($comments as $comment)
-                @include('partials/comment', ['comment' => $comment])
-            @endforeach
-        </div>
+        @if(count($comments))
+            <div class="panel panel-body">
+                @foreach($comments as $comment)
+                    @include('partials/comment', ['comment' => $comment])
+                @endforeach
+            </div>
+        @endif
         {{--Reply--}}
         <div class="panel panel-body">
             <h3 class="panel">Leave a comment</h3>

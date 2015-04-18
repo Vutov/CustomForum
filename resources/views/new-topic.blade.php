@@ -23,8 +23,7 @@
 
                     <div class="form-group">
                         {!! Form::label('tags', 'Tags', ['class' => 'label label-default']) !!}
-                        {!! Form::text('tags', null, ['class' => 'form-control', 'placeholder'=>'Separate different tags
-                        with comma']) !!}
+                        {!! Form::text('tags', null, ['class' => 'form-control', 'placeholder'=>'Separate different tags with comma']) !!}
                     </div>
 
                     <div class="form-group">
