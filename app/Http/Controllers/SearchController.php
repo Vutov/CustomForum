@@ -50,7 +50,7 @@ class SearchController extends Controller
             }
         }
 
-        return view('search', ['data' => $data]);
+        return view('search', ['data' => $data, 'criteria' => $criteria]);
     }
 
     public function show($criteria, $id) {
