@@ -27,23 +27,25 @@ class SearchController extends Controller
                 $data[$str] = $user;
             } else if ($criteria === 'Topic title') {
                 $topic = Topic::where('title', 'LIKE', '%' . $str . '%')->get()->toArray();
-                $data[] = $topic;
+                $data[$str] = $topic;
             } else if ($criteria === 'Topic question') {
                 $topic = Topic::where('body', 'LIKE', '%' . $str . '%')->get()->toArray();
-                $data[] = $topic;
+                $data[$str] = $topic;
             } else if ($criteria === 'Topic tags') {
+                $criteria = 'Topic tag';
                 $tag = str_replace('#', '', $str);
                 $topic = Topic::where('tags', 'LIKE', '%' . $tag . '%')->get()->toArray();
-                $data[] = $topic;
+                $data[$str] = $topic;
             } else if ($criteria === 'Topic category') {
+                $criteria = 'Topic categorie';
                 $topic = Topic::where('category', 'LIKE', '%' . $str . '%')->get()->toArray();
-                $data[] = $topic;
+                $data[$str] = $topic;
             } else if ($criteria === 'Comment title') {
                 $comment = Comment::where('title', 'LIKE', '%' . $str . '%')->get()->toArray();
-                $data[] = $comment;
+                $data[$str] = $comment;
             } else if ($criteria === 'Comment answer') {
                 $comment = Comment::where('body', 'LIKE', '%' . $str . '%')->get()->toArray();
-                $data[] = $comment;
+                $data[$str] = $comment;
             }
             else {
                 abort(404);

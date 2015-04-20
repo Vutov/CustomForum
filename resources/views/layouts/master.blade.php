@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>Master Page</title>
+    <title>Forum</title>
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('/css/style.css')}}"/>
     <!-- Fonts -->

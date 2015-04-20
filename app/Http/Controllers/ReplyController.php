@@ -65,6 +65,7 @@ class ReplyController extends Controller
             Auth::user()->comments()->save($comment);
         }
 
+        session()->flash('flash_message', 'New reply created');
         return redirect("/forum/$id");
     }
 
