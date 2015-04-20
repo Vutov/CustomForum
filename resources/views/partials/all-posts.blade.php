@@ -4,12 +4,8 @@
     </h2>
 
     <div class="panel-body">
-        <div class="panel-info">Category <a href="/search/cat/{{$topic['category']}}">{{$topic['category']}}</a></div>
-        <div class="panel-group">Tags:
-            @foreach($topic['tags'] as $tag)
-                <a href="/search/tag/{{$tag}}">#{{$tag}}</a>
-            @endforeach
-        </div>
+        @include('partials.display-category',['category' => $topic['category']])
+        @include('partials.display-tags', ['tags'=>$topic['tags']])
         <div class="panel-group">Posted {{$topic['time']}} by <a
                     href="/profile/{{$topic['author']}}">{{$topic['author']}}</a>.
         </div>

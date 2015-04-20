@@ -1,0 +1,1 @@
+<div>Category <a href="/search/cat/{{$category}}">{{$category}}</a></div>

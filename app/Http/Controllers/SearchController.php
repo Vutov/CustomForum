@@ -46,8 +46,7 @@ class SearchController extends Controller
             } else if ($criteria === 'Comment answer') {
                 $comment = Comment::where('body', 'LIKE', '%' . $str . '%')->get()->toArray();
                 $data[$str] = $comment;
-            }
-            else {
+            } else {
                 abort(404);
             }
         }
@@ -55,18 +54,23 @@ class SearchController extends Controller
         return view('search', ['data' => $data, 'criteria' => $criteria]);
     }
 
-    public function show($criteria, $id) {
+    public function show($criteria, $id)
+    {
 
         if ($criteria === 'cat') {
             $result = Topic::where('category', '=', $id)->get()->toArray();
-        }
-        else if ($criteria === 'tag') {
+        } else if ($criteria === 'tag') {
             $result = Topic::where('tags', 'LIKE', '%' . $id . '%')->get()->toArray();
         } else {
             abort(404);
         }
+        $final = [];
+        foreach ($result as $topic) {
+            $tags = preg_split('/[,\s]+/', $topic['tags'], -1, PREG_SPLIT_NO_EMPTY);
+            $topic['tags'] = $tags;
+            $final[] = $topic;
+        }
 
-
-        return view('search', ['data' => $result, 'criteria' => $criteria]);
+        return view('search', ['data' => $final, 'criteria' => $criteria, 'query' => $id]);
     }
 }

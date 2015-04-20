@@ -31,11 +31,11 @@ class ProfileController extends Controller
     public function show($id)
     {
         $name = $id;
-        $id = User::where('name', '=' ,$id)->firstOrFail()['id'];
+        $id = User::where('name', '=', $id)->firstOrFail()['id'];
         $topics = Topic::where('user_id', '=', $id)->get()->toArray();
         $comments = Comment::where('user_id', '=', $id)->get()->toArray();
 
-        return view('profile', ['topics' => $topics, 'comments' => $comments, 'name' => $name,'text' => $name . '\'s']);
+        return view('profile', ['topics' => $topics, 'comments' => $comments, 'name' => $name, 'text' => $name . '\'s']);
     }
 
     /**

@@ -16,6 +16,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Forum <span class="sr-only">(current)</span></a></li>
+                {{--<li><a href="#">Blog</a></li>--}}
+                <li><a href="http://getbootstrap.com/">Bootstrap</a></li>
+                <li><a href="https://laracasts.com/">Laracast</a></li>
             </ul>
             {!! Form::open(['url' => '/search', 'class' => 'navbar-form navbar-right', 'role' => 'search']) !!}
             {{--Search Button--}}
