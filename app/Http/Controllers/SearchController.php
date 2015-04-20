@@ -65,6 +65,6 @@ class SearchController extends Controller
         }
 
 
-        return view('search', ['data' => $result]);
+        return view('search', ['data' => $result, 'criteria' => $criteria]);
     }
 }
