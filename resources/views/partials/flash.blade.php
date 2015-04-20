@@ -3,3 +3,6 @@
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     </div>
 @endif
+@if(Session::has('flash_message_error'))
+    <div class='alert alert-danger'>{{ session('flash_message_error') }}</div>
+@endif

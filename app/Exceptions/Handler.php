@@ -3,6 +3,8 @@
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Database\Eloquent\ModelNotFoundException as ModelNotFoundException;
+use Illuminate\Support\Facades\Redirect;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -41,6 +43,11 @@ class Handler extends ExceptionHandler
         if ($e instanceof ModelNotFoundException)
         {
             abort(404);
+        }
+        
+        if ($e instanceof MethodNotAllowedHttpException) {
+            session()->flash('flash_message_error', 'The search has to be between 4 and 20 characters!');
+            return redirect('/');
         }
         return parent::render($request, $e);
 

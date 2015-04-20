@@ -3,6 +3,7 @@
 @section('content')
     {{--{{var_dump($criteria)}}--}}
     @if($criteria === 'Username')
+        {{var_dump($data)}}
         <div class="list-group">
             @forelse($data as $users)
                 <h2 class="list-group-item">Found users:</h2>
