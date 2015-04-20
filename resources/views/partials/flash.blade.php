@@ -4,5 +4,7 @@
     </div>
 @endif
 @if(Session::has('flash_message_error'))
-    <div class='alert alert-danger'>{{ session('flash_message_error') }}</div>
+    <div class='alert alert-danger'>
+        <strong>Sorry!</strong> There were some problems with your input.<br><br>
+        {{ session('flash_message_error') }}</div>
 @endif

@@ -3,18 +3,20 @@
 @section('content')
     {{--{{var_dump($criteria)}}--}}
     @if($criteria === 'Username')
-        {{var_dump($data)}}
+        {{--        {{var_dump($data)}}--}}
         <div class="list-group">
-            @forelse($data as $users)
-                <h2 class="list-group-item">Found users:</h2>
-                @foreach($users as $user)
-                    <a href="/profile/{{$user['name']}}" class="list-group-item"><strong>{{$user['name']}}</strong>
-                        registered {{$user['created_at']}}</a>
-                @endforeach
+            @foreach($data as $name => $users)
+                <h3 class="list-group-item">Users found matching "{{$name}}":</h3>
+                @forelse($users as $user)
+                    <a href="/profile/{{$user['name']}}" class="list-group-item list-group-item-success">
+                        <strong>{!! preg_replace("/$name/i", "<span style='text-decoration: underline;'>$0</span>", $user['name'])!!}</strong>
+                        registered {{$user['created_at']}}
+                    </a>
+                @empty
+                    <div class="list-group-item list-group-item-danger"><strong>Sorry! </strong>No users found matching "{{$name}}"!</div>
+                @endforelse
+            @endforeach
         </div>
-        @empty
-            <div>No one found</div>
-        @endforelse
     @else
         {{var_dump($data)}}
     @endif

@@ -24,7 +24,7 @@ class SearchController extends Controller
         foreach ($query as $str) {
             if ($criteria === 'Username') {
                 $user = User::where('name', 'LIKE', '%' . $str . '%')->get()->toArray();
-                $data[] = $user;
+                $data[$str] = $user;
             } else if ($criteria === 'Topic title') {
                 $topic = Topic::where('title', 'LIKE', '%' . $str . '%')->get()->toArray();
                 $data[] = $topic;

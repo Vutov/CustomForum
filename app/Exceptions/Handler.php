@@ -46,7 +46,7 @@ class Handler extends ExceptionHandler
         }
         
         if ($e instanceof MethodNotAllowedHttpException) {
-            session()->flash('flash_message_error', 'The search has to be between 4 and 20 characters!');
+            session()->flash('flash_message_error', 'The search has to be between 4 and 20 characters long!');
             return redirect('/');
         }
         return parent::render($request, $e);
