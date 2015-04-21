@@ -43,7 +43,11 @@ class TopicsController extends Controller
      */
     public function create(NewTopicRequest $request)
     {
-        return view('new-topic');
+        return view('new-topic', [
+            'event' => 'Create',
+            'title' => 'New Question',
+            'controller' => 'create'
+        ]);
     }
 
     /**
@@ -112,7 +116,13 @@ class TopicsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $topic = Topic::findOrFail($id);
+        return view('new-topic', [
+            'event' => 'Update',
+            'title' => 'Update question',
+            'controller' => 'edit',
+            'topic' => $topic,
+        ]);
     }
 
     /**
@@ -121,9 +131,14 @@ class TopicsController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update($id)
+    public function update($id, SubmitTopicRequest $request)
     {
-        //
+        $input = Request::all();
+        $topic = Topic::findOrFail($id);
+        $topic->update($input);
+
+        session()->flash('flash_message', 'You have successfully updated your question!');
+        return redirect("/forum/$id");
     }
 
     /**

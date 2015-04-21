@@ -7,10 +7,14 @@
         <div class="col-md-8 col-md-offset-2">
 
             <div class="panel panel-default">
-                <div class="panel-heading">New Topic</div>
+                <div class="panel-heading">{{$title}}</div>
                 <div class="panel-body">
 
-                    {!! Form::open(['url' => '/forum']) !!}
+                    @if($controller === 'edit')
+                        {!! Form::model($topic, ['method' => 'PATCH' ,'url' => ['/forum/'.$topic->id]]) !!}
+                    @else
+                        {!! Form::open(['url' => '/forum']) !!}
+                    @endif
 
                     @include('partials/topic-form', ['body' => 'Question', 'bodyPlaceholder' => 'Type your question here'])
 
@@ -27,7 +31,7 @@
 
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-5">
-                            {!! Form::submit('Create', ['class' => 'btn btn-primary']) !!}
+                            {!! Form::submit($event, ['class' => 'btn btn-primary']) !!}
 
                         </div>
                     </div>

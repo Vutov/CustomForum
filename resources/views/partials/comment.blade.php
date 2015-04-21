@@ -1,6 +1,7 @@
 <article class="panel panel-primary">
-    <h3 class="panel-title panel-heading">
-        {{$comment['title']}}
+    <h3 class="panel-heading">
+        @include('partials.edit-title', ['user_id' => $comment['user_id'],'controller' => '/reply',
+    'title' => $comment['title'],'id' => $comment['id']])
     </h3>
 
     <div class="panel panel-body">{{$comment['body']}}</div>

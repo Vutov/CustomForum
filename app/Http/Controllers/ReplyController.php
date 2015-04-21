@@ -88,7 +88,8 @@ class ReplyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+        return view('edit-comment', ['comment' => $comment]);
     }
 
     /**
@@ -97,9 +98,14 @@ class ReplyController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update($id)
+    public function update($id, ReplyRequest $request)
     {
-        //
+        $input = Request::all();
+        $comment = Comment::findOrFail($id);
+        $comment->update($input);
+
+        session()->flash('flash_message', 'You have successfully updated your answer!');
+        return redirect("/forum/". $comment['topic_id']);
     }
 
     /**
