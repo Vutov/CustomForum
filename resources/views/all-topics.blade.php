@@ -1,5 +1,7 @@
 @extends('layouts.master')
-
+@section('title')
+    <title>All Topics</title>
+@endsection
 @section('content')
     <div class="panel">
         <a href="/forum/create" class="btn btn-primary">New topic</a>

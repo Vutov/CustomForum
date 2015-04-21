@@ -1,5 +1,7 @@
 @extends('layouts.master')
-
+@section('title')
+    <title>Results for {{$query}}</title>
+@endsection
 @section('content')
 
     @if($criteria === 'Username')

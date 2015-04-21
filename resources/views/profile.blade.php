@@ -1,5 +1,11 @@
 @extends('layouts.master')
-
+@section('title')
+    @if($name === 'You')
+        <title>{{Auth::user()->name}}'s profile</title>
+    @else
+        <title>{{$name}}'s profile</title>
+    @endif
+@endsection
 @section('content')
     <div class="panel panel-primary">
         <div class="panel panel-heading">

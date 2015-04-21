@@ -1,5 +1,7 @@
 @extends('layouts.master')
-
+@section('title')
+    <title>{{$title}}</title>
+@endsection
 @section('content')
     {{--Topic--}}
     <article class="panel panel-primary">
