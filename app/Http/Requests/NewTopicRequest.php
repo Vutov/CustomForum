@@ -22,7 +22,7 @@ class NewTopicRequest extends Request
     //If not logged
     public function forbiddenResponse()
     {
-        session()->flash('flash_message', 'You have to be logged in to create new topic!');
+        session()->flash('flash_message_forbidden', 'You have to be logged in to create new topic!');
         return redirect('auth/login');
     }
 

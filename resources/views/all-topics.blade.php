@@ -4,7 +4,13 @@
 @endsection
 @section('content')
     <div class="panel">
-        <a href="/forum/create" class="btn btn-primary">New topic</a>
+        <div class="btn-group">
+            <a href="/forum/create" class="btn btn-primary">New topic</a>
+            <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                Forum rules
+            </a>
+            @include('partials.rules')
+        </div>
     </div>
 
     @if(!count($topics))

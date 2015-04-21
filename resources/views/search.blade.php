@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    <title>Results for {{$query}}</title>
+    <title>Search</title>
 @endsection
 @section('content')
 

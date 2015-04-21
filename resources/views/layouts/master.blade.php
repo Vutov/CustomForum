@@ -27,5 +27,44 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </div>
+
+<div class="scroll-top-wrapper ">
+	<span class="scroll-top-inner">
+		<span class="glyphicon glyphicon-hand-up" aria-hidden="true" style="font-size: 3rem; margin: 5px"></span>
+	</span>
+</div>
+
+<script>
+    $(function () {
+        $(document).on('scroll', function () {
+
+            if ($(window).scrollTop() > 100) {
+                $('.scroll-top-wrapper').addClass('show');
+            } else {
+                $('.scroll-top-wrapper').removeClass('show');
+            }
+        });
+    });
+
+    $(function () {
+        $(document).on('scroll', function () {
+            if ($(window).scrollTop() > 100) {
+                $('.scroll-top-wrapper').addClass('show');
+            } else {
+                $('.scroll-top-wrapper').removeClass('show');
+            }
+        });
+
+        $('.scroll-top-wrapper').on('click', scrollToTop);
+    });
+
+    function scrollToTop() {
+        verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+        element = $('body');
+        offset = element.offset();
+        offsetTop = offset.top;
+        $('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+    }
+</script>
 </body>
 </html>
