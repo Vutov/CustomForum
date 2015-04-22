@@ -13,26 +13,6 @@ class ReplyController extends Controller
 {
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param Requests\ReplyRequest $request
@@ -70,17 +50,6 @@ class ReplyController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int $id
@@ -114,9 +83,9 @@ class ReplyController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($id, Requests\EditRequest $request)
     {
-        //
+        echo 'del';
     }
 
 }

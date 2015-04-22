@@ -147,9 +147,9 @@ class TopicsController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($id, Requests\EditRequest $request)
     {
-//        echo 'del';
+        echo 'del';
     }
 
 }
