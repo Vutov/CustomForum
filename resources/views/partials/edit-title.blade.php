@@ -5,6 +5,8 @@
             <a href="{{$controller}}/{{$id}}/edit" class="btn btn-default">Edit</a>
             {!! Form::submit('Delete', ['class' => 'btn btn-default']) !!}
             {!! Form::close() !!}
+    @else
+        {{$title}}
     @endif
 @else
     {{$title}}
