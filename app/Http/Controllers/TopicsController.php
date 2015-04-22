@@ -114,7 +114,7 @@ class TopicsController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($id, Requests\EditRequest $request)
     {
         $topic = Topic::findOrFail($id);
         return view('new-topic', [
@@ -149,7 +149,7 @@ class TopicsController extends Controller
      */
     public function destroy($id)
     {
-        //
+//        echo 'del';
     }
 
 }

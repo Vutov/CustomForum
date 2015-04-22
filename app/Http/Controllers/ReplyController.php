@@ -86,7 +86,7 @@ class ReplyController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($id, Requests\EditRequest $request)
     {
         $comment = Comment::findOrFail($id);
         return view('edit-comment', ['comment' => $comment]);
