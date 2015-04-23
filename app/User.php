@@ -32,15 +32,24 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     protected $hidden = ['password', 'remember_token'];
 
+    /**
+     * Allows automatic user_id assign
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function topics()
     {
         return $this->hasMany('Forum\Topic');
     }
 
+    /**
+     * Allows automatic user_id assign
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function comments()
     {
         return $this->hasMany('Forum\Comment');
     }
-
 
 }

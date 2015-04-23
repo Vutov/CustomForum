@@ -85,7 +85,9 @@ class ReplyController extends Controller
      */
     public function destroy($id, Requests\EditRequest $request)
     {
-        echo 'del';
+        Comment::where('id', '=', $id)->delete();
+        session()->flash('flash_message', 'Answer deleted!');
+        return redirect()->back();
     }
 
 }

@@ -21,6 +21,7 @@ class CreateTopicsTable extends Migration {
             $table->integer('visits');
             $table->string('tags', 100);
             $table->string('category', 25);
+            $table->softDeletes();
 			$table->timestamps();
 		});
 	}

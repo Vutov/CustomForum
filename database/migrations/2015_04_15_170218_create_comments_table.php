@@ -22,6 +22,7 @@ class CreateCommentsTable extends Migration {
             $table->boolean('guest');
             $table->string('user_name', 25);
             $table->string('user_email', 35)->nullable();
+            $table->softDeletes();
 			$table->timestamps();
 		});
 	}

@@ -85,7 +85,6 @@ class TopicsController extends Controller
     public function show($id)
     {
         $topic = Topic::findOrFail($id);
-        //Get comments
         $comments = Comment::where('topic_id', '=', $id)->latest()->get();
         $data = [];
         foreach($comments as $comment) {
@@ -160,7 +159,10 @@ class TopicsController extends Controller
      */
     public function destroy($id, Requests\EditRequest $request)
     {
-        echo 'del';
+        Topic::where('id', '=', $id)->delete();
+        session()->flash('flash_message', 'Question deleted!');
+
+        return redirect('/');
     }
 
 }
