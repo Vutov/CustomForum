@@ -41,6 +41,4 @@
             @endforelse
         </div>
     </div>
-    {{--{{var_dump($comments)}}--}}
-    {{--{{var_dump($topics)}}--}}
 @endsection

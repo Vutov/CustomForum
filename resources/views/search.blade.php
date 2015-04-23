@@ -117,5 +117,4 @@
             @endforeach
         </div>
     @endif
-    {{--{{var_dump($data)}}--}}
 @endsection

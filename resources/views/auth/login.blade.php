@@ -36,8 +36,9 @@
                             <div class="col-md-8">
                                 <div class="col-md-offset-3  btn-group">
                                     <button type="submit" class="btn btn-primary">Login</button>
-                                    <a class="btn btn-default" href="{{ url('/auth/register') }}">Don't have
-                                        account?</a>
+                                    <a class="btn btn-default" href="{{ url('/auth/register') }}">
+                                        Don't have account?
+                                    </a>
                                 </div>
                             </div>
                         </div>
