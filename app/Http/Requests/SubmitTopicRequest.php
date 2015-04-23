@@ -29,6 +29,11 @@ class SubmitTopicRequest extends Request {
         ];
     }
 
+    /**
+     * Overrides default messages.
+     *
+     * @return array
+     */
     public function messages()
     {
         return [

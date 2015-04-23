@@ -54,6 +54,12 @@ class SearchController extends Controller
         return view('search', ['data' => $data, 'criteria' => $criteria]);
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return Response
+     */
     public function show($criteria, $id)
     {
 

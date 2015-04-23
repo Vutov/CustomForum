@@ -40,11 +40,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        //Not existing page.
         if ($e instanceof ModelNotFoundException)
         {
             abort(404);
         }
-        
+
+        //Not existing page to return to after search.
         if ($e instanceof MethodNotAllowedHttpException) {
             session()->flash('flash_message_error', 'The search has to be between 4 and 20 characters long!');
             return redirect('/');

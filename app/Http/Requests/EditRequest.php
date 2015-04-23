@@ -25,7 +25,6 @@ class EditRequest extends Request {
         else {
             return false;
         }
-        //dd(Auth::user()->admin);
         if (Auth::user()) {
             if (Auth::user()->id === $edit['user_id'] || Auth::user()->admin) {
                 return true;
