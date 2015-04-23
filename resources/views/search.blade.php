@@ -12,11 +12,12 @@
                     <a href="/profile/{{$user['name']}}" class="list-group-item list-group-item-success">
                         <strong>
                             {!! preg_replace("/$name/i", "<span style='text-decoration: underline;'>$0</span>",$user['name'])!!}</strong>
+                        @include('partials.user-tag', ['admin' => $user['admin'], 'guest' => null])
                         registered {{$user['created_at']}}
                     </a>
                 @empty
                     <div class="list-group-item list-group-item-danger">
-                        <strong>Sorry! </strong>No users found matching"{{$name}}"!
+                        <strong>Sorry! </strong>No users found matching "{{$name}}"!
                     </div>
                 @endforelse
             @endforeach

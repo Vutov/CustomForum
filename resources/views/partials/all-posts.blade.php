@@ -7,7 +7,8 @@
         @include('partials.display-category',['category' => $topic['category']])
         @include('partials.display-tags', ['tags'=>$topic['tags']])
         <div class="panel-group">Posted {{$topic['time']}} by <a
-                    href="/profile/{{$topic['author']}}">{{$topic['author']}}</a>.
+                    href="/profile/{{$topic['author']}}">{{$topic['author']}}</a>
+            @include('partials.user-tag', ['admin' => $topic['admin'], 'guest' => null])
         </div>
     </div>
 </article>

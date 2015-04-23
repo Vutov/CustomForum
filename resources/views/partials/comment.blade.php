@@ -8,7 +8,7 @@
     <div class="panel-footer">
         {{$comment['time']}} by
         @if($comment['guest'])
-            {{$comment['user_name']}} (Guest)
+            {{$comment['user_name']}} @include('partials.user-tag', ['admin' => null, 'guest' => true])
             @if($comment['user_email'])
                 <div class="panel panel-collapse">
                     {{$comment['user_email']}}
@@ -16,6 +16,7 @@
             @endif
         @else
             <a href="/profile/{{$comment['user_name']}}">{{$comment['user_name']}}</a>
+            @include('partials.user-tag', ['admin' => $comment['admin'], 'guest' => null])
         @endif
     </div>
 </article>

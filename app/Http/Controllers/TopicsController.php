@@ -23,10 +23,13 @@ class TopicsController extends Controller
         $topics = Topic::latest()->get();
         $data = [];
         foreach ($topics as $topic) {
-            $author = User::find($topic['user_id'])['name'];
+            $user =User::find($topic['user_id']);
+            $author = $user['name'];
+            $admin = $user['admin'];
             $time = $topic->created_at->diffForHumans();
             $topic = $topic->toArray();
             $topic['author'] = $author;
+            $topic['admin'] = $admin;
             $topic['time'] = $time;
             $tags = preg_split('/[,\s]+/', $topic['tags'], -1, PREG_SPLIT_NO_EMPTY);
             $topic['tags'] = $tags;
@@ -89,6 +92,11 @@ class TopicsController extends Controller
             $time = $comment->created_at->diffForHumans();
             $comment = $comment->toArray();
             $comment['time'] = $time;
+            $admin = false;
+            if ($comment['user_id']) {
+                $admin = User::where('id' , '=', $comment['user_id'])->get()->toArray()[0]['admin'];
+            }
+            $comment['admin'] = $admin;
             $data[] = $comment;
 
         }
@@ -98,11 +106,14 @@ class TopicsController extends Controller
         //Sum up the data
         $topic = $topic->toArray();
         $time = Carbon::parse($topic['created_at'])->format('jS F Y \a\t H:m:s');
-        $author = User::find($topic['user_id'])['name'];
+        $user =User::find($topic['user_id']);
+        $author = $user['name'];
+        $admin = $user['admin'];
         $tags = preg_split('/[,\s]+/', $topic['tags'], -1, PREG_SPLIT_NO_EMPTY);
         $topic['tags'] = $tags;
         $topic['time'] = $time;
         $topic['author'] = $author;
+        $topic['admin'] = $admin;
         $topic['comments'] = $data;
 
         return view('topic', $topic);
